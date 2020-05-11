@@ -8,7 +8,7 @@ This repository consists of methods to identify the different shaped particles a
  
 
 # Requirements
-Python3.6, Imutils, Scikit-Image, Numpy, OpenCV, Scipy, Matplotlib
+Python3.6, Imutils, Scikit-Image, Numpy, OpenCV, Matplotlib
 
 # How to run?
 Please install the above mentioned requirements and clone the repository. The repo has only one .py to perform the EM image analysis  
