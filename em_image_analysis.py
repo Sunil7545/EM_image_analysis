@@ -4,7 +4,6 @@ import numpy as np
 import imutils
 import cv2
 import matplotlib.pyplot as plt
-from scipy.stats import norm
 from os import listdir
 from os.path import isfile, join
 
@@ -86,20 +85,14 @@ def compute_contour(thresh):
 
 
 def hist_plot(data_array, label, hist_title, f_name):
-    fig = plt.figure()
+    plt.figure()
     num_bin = 20
     # the histogram of the data
-    n, bins, patches = plt.hist(data_array, num_bin, facecolor='green', alpha=0.5)
-    # best fit of data
-    (mu, sigma) = norm.fit(data_array)
-    # add a 'best fit' line
-    # y = norm.pdf(bins, mu, sigma)
-    # l = plt.plot(bins, y, 'r--', linewidth=2)
+    plt.hist(data_array, num_bin, facecolor='green', alpha=0.5)
     # plot
     plt.title(hist_title)
     plt.xlabel(label)
     plt.ylabel('frequency')
-    # plt.title(r'$\mathrm{Histogram\ of\ IQ:}\ \mu=%.3f,\ \sigma=%.3f$' % (mu, sigma))
     plt.grid(True)
     plt.savefig('hist_' + hist_title + f_name)
 
@@ -191,8 +184,8 @@ def compute_particle_params(contours_image_input, image_input, hist_name):
 
         # compute the aspect ratio using the rectangle info
         aspect_ratio_particle[i, 0] = width_height[1] / width_height[0]
-        box = cv2.boxPoints(min_rectangle)
-        box = np.int0(box)
+        # box = cv2.boxPoints(min_rectangle)
+        # box = np.int0(box)
 
         # a circle which encloses the particle
         ((cX, cY), radius) = cv2.minEnclosingCircle(c)
